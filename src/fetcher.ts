@@ -11,8 +11,6 @@ export const fetcher = async ({
   queryCode: string;
   variables: object;
 }) => {
-  console.log(import.meta.env);
-  console.log(API_URL);
   const res = await fetch(
     `${API_URL}?schema=${encodeURIComponent(
       JSON.stringify(schemaCode)
