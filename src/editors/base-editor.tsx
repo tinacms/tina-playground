@@ -109,14 +109,16 @@ export const BaseEditor = (props: {
             variables: {},
           });
           const operationUri = operationModel.uri.toString();
-          const schemaConfig = {
-            introspectionJSON: schema.data,
-            uri: monaco.Uri.parse(API_URL).toString(),
-          };
-          if (schema) {
-            monacoGraphQLAPI.setSchemaConfig([
-              { ...schemaConfig, fileMatch: [operationUri] },
-            ]);
+          if (typeof API_URL === "string") {
+            const schemaConfig = {
+              introspectionJSON: schema.data,
+              uri: monaco.Uri.parse(API_URL).toString(),
+            };
+            if (schema) {
+              monacoGraphQLAPI.setSchemaConfig([
+                { ...schemaConfig, fileMatch: [operationUri] },
+              ]);
+            }
           }
         }
 
