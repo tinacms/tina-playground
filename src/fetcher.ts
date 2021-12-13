@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:4001/graphql-mem";
+export const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetcher = async ({
   schemaCode,
@@ -11,6 +11,8 @@ export const fetcher = async ({
   queryCode: string;
   variables: object;
 }) => {
+  console.log(import.meta.env);
+  console.log(API_URL);
   const res = await fetch(
     `${API_URL}?schema=${encodeURIComponent(
       JSON.stringify(schemaCode)
