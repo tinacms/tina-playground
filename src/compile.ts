@@ -1,4 +1,5 @@
 import * as esbuild from "esbuild-wasm";
+import wasmURL from "esbuild-wasm/esbuild.wasm?url";
 
 let built = false;
 
@@ -8,7 +9,7 @@ export async function executeCode<T extends unknown>(
 ): Promise<T> {
   if (!built) {
     await esbuild.initialize({
-      wasmURL: "/node_modules/esbuild-wasm/esbuild.wasm",
+      wasmURL: wasmURL,
     });
     built = true;
   }
