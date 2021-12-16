@@ -193,23 +193,23 @@ export function Layout({
         />
       ),
     },
-    //     {
-    //       name: "schema.graphql",
-    //       render: (
-    //         <BaseEditor
-    //           extension="graphql"
-    //           resetCounter={state.resetCounter}
-    //           state={state}
-    //           name={state.example.name}
-    //           code={`query {
+    // {
+    //   name: "schema.graphql",
+    //   render: (
+    //     <BaseEditor
+    //       extension="graphql"
+    //       resetCounter={state.resetCounter}
+    //       state={state}
+    //       name={state.example.name}
+    //       code={`query {
     //   __typename
     // }`}
-    //           onUpdate={async (code) => {
-    //             // dispatch({ type: "schemaCode", value: code });
-    //           }}
-    //         />
-    //       ),
-    //     },
+    //       onUpdate={async (code) => {
+    //         // dispatch({ type: "schemaCode", value: code });
+    //       }}
+    //     />
+    //   ),
+    // },
   ];
   const [activeIndex, setActiveIndex] = React.useState(0);
 
@@ -299,6 +299,7 @@ export function Layout({
 
 type ErrorState = {
   hasError: boolean;
+  error: Error | null;
 };
 
 export class ErrorBoundary extends React.Component<
@@ -307,18 +308,21 @@ export class ErrorBoundary extends React.Component<
 > {
   state: ErrorState = {
     hasError: this.props.status === "error",
+    error: null,
   };
 
   static getDerivedStateFromError(error: Error) {
-    console.log(error);
-    return { hasError: true };
+    return { hasError: true, error: error };
   }
 
   render() {
     if (this.state.hasError) {
+      const errors = this.state.error
+        ? [...this.props.errors, this.state.error]
+        : this.props.errors;
       return (
         <ErrorComp
-          errors={this.props.errors}
+          errors={errors}
           reset={() => this.setState({ hasError: false })}
           dispatch={this.props.dispatch}
         />

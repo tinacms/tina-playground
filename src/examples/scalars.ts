@@ -75,9 +75,11 @@ export default defineSchema({
 })`;
 
 export const markdownCode2 = `---
+date: '2021-12-09T08:00:00.000Z'
 ---`;
 
-export const reactCode2 = `return (
+export const reactCode2 = `
+return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
@@ -88,13 +90,42 @@ export const reactCode2 = `return (
   </div>
 )`;
 
-// FIXME: moment is not defined
 export const datetime = {
   label: "Datetime",
   name: "datetime",
   value: {
     queryCode: queryCode2,
     schemaCode: schemaCode2,
+    markdownCode: markdownCode2,
+    reactCode: wrapCode(reactCode2, queryCode2),
+  },
+  section: "middle",
+};
+
+export const schemaCodeFormatted = `import { defineSchema } from '@tinacms/cli'
+
+export default defineSchema({
+  collections: [{
+    label: "Post",
+    name: "post",
+    path: "posts",
+    fields: [{
+      label: "Date",
+      name: "date",
+      type: "datetime",
+      ui: {
+        dateFormat: 'YYYY MM DD'
+      }
+    }]
+  }]
+})`;
+
+export const datetimeFormatted = {
+  label: "Datetime Custom Format",
+  name: "datetime-format",
+  value: {
+    queryCode: queryCode2,
+    schemaCode: schemaCodeFormatted,
     markdownCode: markdownCode2,
     reactCode: wrapCode(reactCode2, queryCode2),
   },
@@ -152,4 +183,9 @@ export const boolean = {
   section: "middle",
 };
 
-export const scalars: Example[] = [number, boolean];
+export const scalars: Example[] = [
+  number,
+  boolean,
+  datetime,
+  datetimeFormatted,
+];

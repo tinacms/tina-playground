@@ -166,13 +166,15 @@ export default defineSchema({
       name: "categories",
       type: "string",
       list: true,
-      options: [{
-        name: "movies",
-        label: "Movies"
-      }, {
-        name: "music",
-        label: "Music"
-      }]
+      options: [
+        {
+          value: "movies",
+          label: "Movies"
+        }, {
+          value: "music",
+          label: "Music"
+        }
+      ]
     }]
   }]
 })`;
