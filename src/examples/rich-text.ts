@@ -30,13 +30,17 @@ const Callout = ({message}) => {
 }
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({query: \`query {
-    getPostDocument(relativePath: "hello-world.md") {
-      data {
-        body
+  const {data, isLoading} = useTina({
+    query: \`query {
+      getPostDocument(relativePath: "hello-world.md") {
+        data {
+          body
+        }
       }
-    }
-  }\`, variables: {}})
+    }\`, 
+    variables: {}, 
+    data: props.data
+  })
 
   if(isLoading) {
     return <div>Loading...</div>

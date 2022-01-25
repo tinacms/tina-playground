@@ -28,7 +28,11 @@ const Callout = ({message}) => {
 }
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({query: \`${queryCode}\`, variables: {}, data: {}})
+  const {data, isLoading} = useTina({
+    query: \`${queryCode}\`, 
+    variables: {}, 
+    data: props.data
+  })
 
   if(isLoading) {
     return <div>Loading...</div>

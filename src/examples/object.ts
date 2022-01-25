@@ -342,7 +342,7 @@ export const blockTestimonial = `return (
 </div>
 )`;
 
-export const reactCodeBlock = `console.log(data)
+export const reactCodeBlock = `
 
 return (
   <div>{data.getPostDocument.data.pageBlocks?.map(pageBlock => {

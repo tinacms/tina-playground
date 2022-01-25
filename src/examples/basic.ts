@@ -23,7 +23,10 @@ export const wrapCodeNoImport = (
 ${importItem}
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({query: \`${queryCode}\`, variables: {}
+  const {data, isLoading} = useTina({
+    query: \`${queryCode}\`, 
+    variables: {}, 
+    data: props.data
   })
   
   if(isLoading) {

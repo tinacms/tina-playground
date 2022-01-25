@@ -18,20 +18,24 @@ export const reactCode = `import React from 'react'
 import { useTina } from 'tinacms/dist/edit-state'
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({query: \`query {
-    getPostDocument(relativePath: "hello-world.md") {
-      data {
-        author {
-          ...on AuthorDocument {
-            data {
-              name
-              avatar
+  const {data, isLoading} = useTina({
+    query: \`query {
+      getPostDocument(relativePath: "hello-world.md") {
+        data {
+          author {
+            ...on AuthorDocument {
+              data {
+                name
+                avatar
+              }
             }
           }
         }
       }
-    }
-  }\`, variables: {}, data: {}})
+    }\`,
+    variables: {}, 
+    data: props.data
+  })
 
   if(isLoading) {
     return <div>Loading...</div>

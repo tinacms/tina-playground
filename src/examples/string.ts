@@ -357,13 +357,17 @@ const DataList = (props) => {
 }
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({query: \`query {
-    getPostDocument(relativePath: "hello-world.md") {
-      data {
-        favoriteIceCream
+  const {data, isLoading} = useTina({
+    query: \`query {
+      getPostDocument(relativePath: "hello-world.md") {
+        data {
+          favoriteIceCream
+        }
       }
-    }
-  }\`, variables: {}})
+    }\`, 
+    variables: {}, 
+    data: props.data
+  })
 
   const cms = useCMS()
 
