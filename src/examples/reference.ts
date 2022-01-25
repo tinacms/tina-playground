@@ -15,10 +15,10 @@ export const queryCode = `query {
 }`;
 
 export const reactCode = `import React from 'react'
-import { useGraphqlForms } from 'tinacms'
+import { useTina } from 'tinacms/dist/edit-state'
 
 export default function Page(props) {
-  const [response, isLoading] = useGraphqlForms({query: gql => gql(\`query {
+  const {data, isLoading} = useTina({query: \`query {
     getPostDocument(relativePath: "hello-world.md") {
       data {
         author {
@@ -31,7 +31,7 @@ export default function Page(props) {
         }
       }
     }
-  }\`), variables: {}})
+  }\`, variables: {}, data: {}})
 
   if(isLoading) {
     return <div>Loading...</div>
@@ -57,12 +57,12 @@ export default function Page(props) {
       <div className="mt-6 flex items-center">
         <div className="flex-shrink-0">
           <a href="#">
-            <img className="h-10 w-10 rounded-full" src={response.getPostDocument.data.author.data.avatar} alt="" />
+            <img className="h-10 w-10 rounded-full" src={data.getPostDocument.data.author.data.avatar} alt="" />
           </a>
         </div>
         <div className="ml-3">
           <p className="text-sm font-medium text-gray-900">
-            <a href="#">{response.getPostDocument.data.author.data.name}</a>
+            <a href="#">{data.getPostDocument.data.author.data.name}</a>
           </p>
           <div className="flex space-x-1 text-sm text-gray-500">
             <span >Yesterday</span>

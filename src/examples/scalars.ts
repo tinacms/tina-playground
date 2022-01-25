@@ -33,7 +33,7 @@ export const reactCode = `return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Counter</span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{response.getPostDocument.data.count}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.count}</span>
       </a>
     </div>
   </div>
@@ -84,7 +84,7 @@ return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Today's date: </span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{response.getPostDocument.data.date}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.date}</span>
       </a>
     </div>
   </div>
@@ -164,7 +164,7 @@ export const reactCode3 = `return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Published</span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{response.getPostDocument.data.published ? "true" : "false"}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.published ? "true" : "false"}</span>
       </a>
     </div>
   </div>

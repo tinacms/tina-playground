@@ -1,5 +1,10 @@
 import React from "react";
-import { TinaCMS as TCMS, LocalClient, TinaProvider } from "tinacms";
+import {
+  TinaCMS as TCMS,
+  LocalClient,
+  TinaProvider,
+  TinaDataProvider,
+} from "tinacms";
 import * as richtext from "tinacms/dist/rich-text";
 import * as tinacms from "tinacms";
 import { executeCode } from "./compile";
@@ -80,5 +85,11 @@ export const FakeTina = (props: {
     );
     return cms;
   }, [props.markdownCode, props.schemaCode, props.reactCode]);
-  return <TinaProvider cms={cms}>{props.children}</TinaProvider>;
+  return (
+    <TinaProvider cms={cms}>
+      <TinaDataProvider formifyCallback={undefined as any}>
+        {props.children}
+      </TinaDataProvider>
+    </TinaProvider>
+  );
 };

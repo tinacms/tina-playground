@@ -1,6 +1,8 @@
 import React from "react";
 import { BaseEditor } from "./editors/base-editor";
 import * as Rich from "tinacms/dist/rich-text";
+import * as EditState from "tinacms/dist/edit-state";
+
 import * as tinacms from "tinacms";
 import * as basic from "./examples/basic";
 import * as advanced from "./examples/advanced";
@@ -39,6 +41,7 @@ const deps = {
   react: React,
   "@tinacms/cli": { defineSchema: (obj: object) => obj },
   "tinacms/dist/rich-text": Rich,
+  "tinacms/dist/edit-state": EditState,
   tinacms: tinacms,
 };
 type Status = "ready" | "pending" | "error";
