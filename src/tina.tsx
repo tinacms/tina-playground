@@ -74,7 +74,7 @@ export const FakeTina = (props: {
     const cms = new TCMS({
       enabled: true,
       sidebar: {
-        position: "overlay",
+        displayMode: "overlay",
       },
     });
     cms.registerApi(
