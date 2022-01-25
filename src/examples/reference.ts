@@ -18,8 +18,7 @@ export const reactCode = `import React from 'react'
 import { useTina } from 'tinacms/dist/edit-state'
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({
-    query: \`query {
+  const {data, isLoading} = useTina({ query: \`query {
       getPostDocument(relativePath: "hello-world.md") {
         data {
           author {
@@ -32,9 +31,7 @@ export default function Page(props) {
           }
         }
       }
-    }\`,
-    variables: {}, 
-    data: props.data
+    }\`, variables: {}, data: props.data
   })
 
   if(isLoading) {
