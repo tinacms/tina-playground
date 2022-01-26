@@ -277,7 +277,7 @@ export function Layout({
                 >
                   <button
                     type="button"
-                    onClick={() => dispatch({ type: "status", value: "ready" })}
+                    onClick={() => dispatch({ type: "retry" })}
                     className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                   >
                     Refresh

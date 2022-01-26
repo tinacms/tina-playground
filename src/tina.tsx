@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   TinaCMS as TCMS,
   LocalClient,
@@ -69,6 +69,7 @@ export const FakeTina = (props: {
   reactCode: string;
   dispatch: Dispatch;
   children: JSX.Element;
+  resetCounter: number;
 }) => {
   const cms = React.useMemo(() => {
     const cms = new TCMS({
@@ -85,9 +86,13 @@ export const FakeTina = (props: {
     );
     return cms;
   }, [props.markdownCode, props.schemaCode, props.reactCode]);
+
   return (
     <TinaProvider cms={cms}>
-      <TinaDataProvider formifyCallback={undefined as any}>
+      <TinaDataProvider
+        key={props.resetCounter}
+        formifyCallback={undefined as any}
+      >
         {props.children}
       </TinaDataProvider>
     </TinaProvider>
