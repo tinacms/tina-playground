@@ -8230,10 +8230,10 @@ throttle-debounce@^3.0.1:
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
   integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
 
-tinacms@0.0.0-2022025214020:
-  version "0.0.0-2022025214020"
-  resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.0.0-2022025214020.tgz#9234c95177406acf854e3de8b59f0f10fd831174"
-  integrity sha512-AWm3O9aoaVRG4IP1k/jFo6yhgeWqKHpVlCrGYe7/TcFeUgzGBY4vYuYqzqB9x+8s/j/OgXPAHmDIZhlq1sosHg==
+tinacms@^0.65.3:
+  version "0.65.3"
+  resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.65.3.tgz#7b736510e5e5e53eaf4f3d20a15bdc80a490d5eb"
+  integrity sha512-iBec06zB+hwLu7ZNOT9bwiaSBUZmqfdwtwGYirQZxFNQRUwiVqmHqt9ixf98gyIRQcAvXLFAQMVAvyH9E9lInQ==
   dependencies:
     "@headlessui/react" "^1.4.1"
     "@heroicons/react" "^1.0.4"
