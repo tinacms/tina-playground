@@ -6,7 +6,7 @@ export const reactCode = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        {response.getPostDocument.data.title}
+        {data.getPostDocument.data.title}
       </h2>
     </div>
   </div>
@@ -35,7 +35,7 @@ export const queryCode2 = `query {
 export const reactCode2 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
-      {response.getPostDocument.data.tags?.map((tag) => (
+      {data.getPostDocument.data.tags?.map((tag) => (
         <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
           {tag}
         </span>
@@ -90,7 +90,7 @@ export const reactCode3 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
       <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
-        {response.getPostDocument.data.category}
+        {data.getPostDocument.data.category}
       </span>
     </div>
   </div>
@@ -145,7 +145,7 @@ export const queryCode4 = `query {
 export const reactCode4 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
-      {response.getPostDocument.data.categories?.map((tag) => (
+      {data.getPostDocument.data.categories?.map((tag) => (
         <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
           {tag}
         </span>
@@ -228,13 +228,13 @@ export const reactCode5 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900">
-        {response.getPostDocument.data.title}
+        {data.getPostDocument.data.title}
       </h2>
       <div className="my-4 flex items-center" aria-hidden="true">
         <div className="w-full border-t border-gray-300" />
       </div>
       <p className="text-md text-gray-700">
-        {response.getPostDocument.data.body}
+        {data.getPostDocument.data.body}
       </p>
     </div>
   </div>
@@ -288,7 +288,7 @@ export const reactCode6 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <p className="text-md text-gray-700">
-        {response.getPostDocument.data.description}
+        {data.getPostDocument.data.description}
       </p>
     </div>
   </div>
@@ -337,7 +337,8 @@ export const markdownCode7 = `---
 `;
 
 export const reactCode7 = `import React from 'react'
-import { useGraphqlForms, useCMS, wrapFieldsWithMeta } from 'tinacms'
+import { useCMS, wrapFieldsWithMeta } from 'tinacms'
+import { useTina } from 'tinacms/dist/edit-state'
 
 const DataList = (props) => {
   const onChange = (e) => {
@@ -356,13 +357,14 @@ const DataList = (props) => {
 }
 
 export default function Page(props) {
-  const [response, isLoading] = useGraphqlForms({query: gql => gql(\`query {
-    getPostDocument(relativePath: "hello-world.md") {
-      data {
-        favoriteIceCream
+  const {data, isLoading} = useTina({ query: \`query {
+      getPostDocument(relativePath: "hello-world.md") {
+        data {
+          favoriteIceCream
+        }
       }
-    }
-  }\`), variables: {}})
+    }\`, variables: {}, data: props.data
+  })
 
   const cms = useCMS()
 
@@ -376,13 +378,13 @@ export default function Page(props) {
   if(isLoading) {
     return <div>Loading...</div>
   }
-  console.log(response.getPostDocument.data)
+  console.log(data.getPostDocument.data)
 
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <p className="text-md text-gray-700">
-          My favorite ice cream flavor is: {response.getPostDocument.data.favoriteIceCream}
+          My favorite ice cream flavor is: {data.getPostDocument.data.favoriteIceCream}
         </p>
       </div>
     </div>

@@ -60,7 +60,7 @@ export const reactCode = `return (
   <blockquote className="mt-10 px-4">
     <div className="max-w-3xl mx-auto text-center text-xl leading-9 font-medium text-gray-900">
       <p>
-        &ldquo;{response.getPostDocument.data.testimonial?.quote}&rdquo;
+        &ldquo;{data.getPostDocument.data.testimonial?.quote}&rdquo;
       </p>
     </div>
     <footer className="mt-8">
@@ -73,13 +73,13 @@ export const reactCode = `return (
           />
         </div>
         <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-          <div className="text-base font-medium text-gray-900">{response.getPostDocument.data.testimonial?.author}</div>
+          <div className="text-base font-medium text-gray-900">{data.getPostDocument.data.testimonial?.author}</div>
 
           <svg className="hidden md:block mx-1 h-5 w-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M11 0h3L9 20H6l5-20z" />
           </svg>
 
-          <div className="text-base font-medium text-gray-500">{response.getPostDocument.data.testimonial?.role}</div>
+          <div className="text-base font-medium text-gray-500">{data.getPostDocument.data.testimonial?.role}</div>
         </div>
       </div>
     </footer>
@@ -164,7 +164,7 @@ export const queryCode2 = `query {
 
 export const reactCode2 = `return (
   <div className="relative">
-  {response.getPostDocument.data.testimonials?.map(testimonial => (<blockquote className="mt-10">
+  {data.getPostDocument.data.testimonials?.map(testimonial => (<blockquote className="mt-10">
     <div className="max-w-3xl mx-auto text-center text-xl leading-9 font-medium text-gray-900">
       <p>
         &ldquo;{testimonial?.quote}&rdquo;
@@ -342,10 +342,10 @@ export const blockTestimonial = `return (
 </div>
 )`;
 
-export const reactCodeBlock = `console.log(response)
+export const reactCodeBlock = `
 
 return (
-  <div>{response.getPostDocument.data.pageBlocks?.map(pageBlock => {
+  <div>{data.getPostDocument.data.pageBlocks?.map(pageBlock => {
     switch(pageBlock.__typename) {
       case "PostPageBlocksCta":
         ${blockCta}

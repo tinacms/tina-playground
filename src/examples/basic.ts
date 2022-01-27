@@ -10,7 +10,7 @@ export const wrapCode = (code: string, queryCode: string) => {
   return wrapCodeNoImport(
     code,
     queryCode,
-    `import { useGraphqlForms } from 'tinacms'`
+    `import { useTina } from 'tinacms/dist/edit-state'`
   );
 };
 
@@ -23,8 +23,11 @@ export const wrapCodeNoImport = (
 ${importItem}
 
 export default function Page(props) {
-  const [response, isLoading] = useGraphqlForms({query: gql => gql(\`${queryCode}\`), variables: {}})
-
+  const {data, isLoading} = useTina({ query: \`${queryCode}\`, 
+    variables: {}, 
+    data: props.data
+  })
+  
   if(isLoading) {
     return <div>Loading...</div>
   }
@@ -38,7 +41,7 @@ export const reactCode = wrapCode(
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block">{response.getPostDocument.data.title}</span>
+          <span className="block">{data.getPostDocument.data.title}</span>
           <span className="block">Start your free trial today.</span>
         </h2>
         <div className="mt-8 flex justify-center">

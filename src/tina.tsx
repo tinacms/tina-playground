@@ -1,5 +1,10 @@
-import React from "react";
-import { TinaCMS as TCMS, LocalClient, TinaProvider } from "tinacms";
+import React, { useEffect, useMemo } from "react";
+import {
+  TinaCMS as TCMS,
+  LocalClient,
+  TinaProvider,
+  TinaDataProvider,
+} from "tinacms";
 import * as richtext from "tinacms/dist/rich-text";
 import * as tinacms from "tinacms";
 import { executeCode } from "./compile";
@@ -64,12 +69,13 @@ export const FakeTina = (props: {
   reactCode: string;
   dispatch: Dispatch;
   children: JSX.Element;
+  resetCounter: number;
 }) => {
   const cms = React.useMemo(() => {
     const cms = new TCMS({
       enabled: true,
       sidebar: {
-        position: "overlay",
+        displayMode: "overlay",
       },
     });
     cms.registerApi(
@@ -80,5 +86,15 @@ export const FakeTina = (props: {
     );
     return cms;
   }, [props.markdownCode, props.schemaCode, props.reactCode]);
-  return <TinaProvider cms={cms}>{props.children}</TinaProvider>;
+
+  return (
+    <TinaProvider cms={cms}>
+      <TinaDataProvider
+        key={props.resetCounter}
+        formifyCallback={undefined as any}
+      >
+        {props.children}
+      </TinaDataProvider>
+    </TinaProvider>
+  );
 };

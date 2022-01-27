@@ -1260,17 +1260,19 @@
     ws "^7.3.1"
     yup "^0.32.9"
 
-"@tinacms/sharedctx@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@tinacms/sharedctx/-/sharedctx-0.0.1.tgz#ae8c8799e3b6ac059cb787fafd5dc9687f43ff9f"
-  integrity sha512-CrlZKoj1bwHM9xhmEVseRs/Ff+AQjwhXCFmsGgWb4ClgghyE5FJFzugTOaaBPm0PvcFg+2hJVUoIzBBhHH0bVA==
+"@tinacms/sharedctx@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@tinacms/sharedctx/-/sharedctx-0.1.0.tgz#1ca290ac96f394362d07b625164a30b85194cc97"
+  integrity sha512-iorVcydqFDsjDp/PMaN4y0kF15qTTfHDd00fUN3wgW9h2fOmCu3o0KjC4yjrDyLnCdA0pHivpbPvOg3kLmCXog==
 
-"@tinacms/toolkit@0.56.3":
-  version "0.56.3"
-  resolved "https://registry.yarnpkg.com/@tinacms/toolkit/-/toolkit-0.56.3.tgz#bb6e2950058cbf652c2b1de0e6b51c2e77a7b97c"
-  integrity sha512-ME9MUIpjMWYd94N7sCCtjHz5tlwj78VUDO3HRcALgDD8ksanIF/y2ZRGmwmj2O8rJtVvzsTww2yArDGt/EMOnA==
+"@tinacms/toolkit@0.56.9":
+  version "0.56.9"
+  resolved "https://registry.yarnpkg.com/@tinacms/toolkit/-/toolkit-0.56.9.tgz#bcdcd786ad04b547fc7d37c9cfb5cc50aa35629a"
+  integrity sha512-yLuAzPJLW8EJVaBjTyNj57C2Bq+9HP9QXD9hBouX8i6nzQh+nWZxRxGtySQRTeEGi6SEM4b+8INwDjLF2oA3ig==
   dependencies:
+    "@headlessui/react" "^1.4.2"
     "@sambego/storybook-styles" "^1.0.0"
+    "@tinacms/sharedctx" "0.1.0"
     "@types/atob" "^2.1.2"
     "@types/cors" "^2.8.12"
     "@types/express" "^4.17.13"
@@ -8228,15 +8230,15 @@ throttle-debounce@^3.0.1:
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
   integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
 
-tinacms@^0.60.3:
-  version "0.60.3"
-  resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.60.3.tgz#8b073ab6f8d56bbe2f01c87046eb7a5dee6c70a9"
-  integrity sha512-DMo7u3fIoukDxkAXUfpIfaABmqcwZAgZ/wRx+4aT8cHUXNHeAEOKdE9flXWeYMb19Kh7X70nR7uEQZJ60hA/wA==
+tinacms@^0.65.3:
+  version "0.65.3"
+  resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.65.3.tgz#7b736510e5e5e53eaf4f3d20a15bdc80a490d5eb"
+  integrity sha512-iBec06zB+hwLu7ZNOT9bwiaSBUZmqfdwtwGYirQZxFNQRUwiVqmHqt9ixf98gyIRQcAvXLFAQMVAvyH9E9lInQ==
   dependencies:
     "@headlessui/react" "^1.4.1"
     "@heroicons/react" "^1.0.4"
-    "@tinacms/sharedctx" "0.0.1"
-    "@tinacms/toolkit" "0.56.3"
+    "@tinacms/sharedctx" "0.1.0"
+    "@tinacms/toolkit" "0.56.9"
     crypto-js "^4.0.0"
     final-form "4.20.1"
     graphql "^15.1.0"
@@ -8244,6 +8246,7 @@ tinacms@^0.60.3:
     lodash.set "^4.3.2"
     react-icons "^4.3.1"
     react-router-dom "6"
+    url-pattern "^1.0.3"
     yup "^0.32.0"
 
 tiny-invariant@1.0.6:
@@ -8686,6 +8689,11 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-pattern@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/url-pattern/-/url-pattern-1.0.3.tgz#0409292471b24f23c50d65a47931793d2b5acfc1"
+  integrity sha1-BAkpJHGyTyPFDWWkeTF5PStaz8E=
 
 url@^0.11.0:
   version "0.11.0"

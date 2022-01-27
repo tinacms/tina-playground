@@ -8,7 +8,7 @@ export const queryCode = `query {
 }`;
 
 export const reactCode = `import React from 'react'
-import { useGraphqlForms } from 'tinacms'
+import { useTina } from 'tinacms/dist/edit-state'
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 const Callout = ({message}) => {
@@ -28,7 +28,10 @@ const Callout = ({message}) => {
 }
 
 export default function Page(props) {
-  const [response, isLoading] = useGraphqlForms({query: gql => gql(\`${queryCode}\`), variables: {}})
+  const {data, isLoading} = useTina({ query: \`${queryCode}\`, 
+    variables: {}, 
+    data: props.data
+  })
 
   if(isLoading) {
     return <div>Loading...</div>
@@ -38,11 +41,11 @@ export default function Page(props) {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl mb-4">
-          <span className="block">{response.getPostDocument.data.title}</span>
+          <span className="block">{data.getPostDocument.data.title}</span>
           <span className="block">Start your free trial today.</span>
         </h2>
         <TinaMarkdown
-          content={response.getPostDocument.data.body}
+          content={data.getPostDocument.data.body}
           components={{Callout}}
         />
       </div>
