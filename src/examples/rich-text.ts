@@ -56,6 +56,58 @@ export default function Page(props) {
     </div>
   )
 }`;
+export const reactCodeExperimental = `import React from 'react'
+import { useTina } from 'tinacms/dist/edit-state'
+import { useCMS } from 'tinacms'
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+
+const Callout = ({message}) => {
+  if(!message) {
+    return null
+  }
+  return (<div className="mt-8 flex justify-center">
+    <div className="inline-flex rounded-md shadow">
+      <a
+        href="#"
+        className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+      >
+        {message}
+      </a>
+    </div>
+  </div>)
+}
+
+export default function Page(props) {
+  const cms = useCMS()
+  React.useMemo(() => {
+    cms.flags.set('rich-text-alt', true)
+  }, [cms])
+  const {data, isLoading} = useTina({ query: \`query {
+      getPostDocument(relativePath: "hello-world.md") {
+        data {
+          body
+        }
+      }
+    }\`, variables: {}, data: props.data
+  })
+
+  if(isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div className="bg-white">
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div className="prose">
+          <TinaMarkdown
+            content={data.getPostDocument.data.body}
+            components={{Callout}}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}`;
 
 export const schemaCode = `import { defineSchema } from '@tinacms/cli'
 
@@ -111,4 +163,16 @@ export const richText = {
   section: "middle",
 };
 
-export const richTexts: Example[] = [richText];
+export const richTextExperimental = {
+  label: "Rich text Experimental",
+  name: "rich-text-experimental",
+  value: {
+    queryCode: queryCode,
+    schemaCode: schemaCode,
+    markdownCode: markdownCode,
+    reactCode: reactCodeExperimental,
+  },
+  section: "middle",
+};
+
+export const richTexts: Example[] = [richText, richTextExperimental];
