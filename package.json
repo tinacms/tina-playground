@@ -2,7 +2,7 @@
   "name": "tina-playground",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --port 3001",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
