@@ -15,7 +15,13 @@ import { executeCode } from "./compile";
 import { FakeTina } from "./tina";
 import { Nav } from "./components/nav";
 import { Tabs } from "./components/tabs";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 
 const examples = [
   {
@@ -423,15 +429,40 @@ const Wrapper = ({
   if (!exampleObject) {
     throw new Error(`Unable to find example code for ${example}`);
   }
+  const [searchParams, setSearchParams] = useSearchParams();
+  const exampleOverride: typeof examples[0]["value"] | undefined =
+    React.useMemo(() => {
+      const overrides = {
+        markdownCode: searchParams.get("markdownCode") || "",
+        reactCode: searchParams.get("reactCode") || "",
+        schemaCode: searchParams.get("schemaCode") || "",
+      };
+      if (
+        overrides.reactCode &&
+        overrides.markdownCode &&
+        overrides.schemaCode
+      ) {
+        return overrides;
+      }
+    }, []);
+
   const init = {
     status: "ready" as const,
     resetCounter: 0,
     examples,
     errors: [],
     example: exampleObject,
-    ...exampleObject.value,
+    ...(exampleOverride || exampleObject.value),
   };
   const [state, dispatch] = React.useReducer(reducer, init);
+
+  React.useEffect(() => {
+    setSearchParams({
+      markdownCode: state.markdownCode,
+      schemaCode: state.schemaCode,
+      reactCode: state.reactCode,
+    });
+  }, [state.markdownCode, state.schemaCode, state.reactCode]);
 
   return (
     <>
