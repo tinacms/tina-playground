@@ -11,13 +11,21 @@ import { API_URL, fetcher } from "../fetcher";
 
 // These are manually copied over from @tinacms/graphql
 import tinatypes from "./types.d.ts?raw";
+import reactypes from "./react-types.d.ts?raw";
 
+monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+  jsx: monaco.languages.typescript.JsxEmit.React,
+});
 monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 monaco.languages.typescript.typescriptDefaults.addExtraLib(
   `
-declare module '@tinacms/cli' {
+declare module 'tinacms' {
   ${tinatypes}
   export declare function defineSchema(obj: TinaCloudSchemaBase) : object
+}
+
+declare module 'react' {
+  ${reactypes}
 }
 `,
   "file:///node_modules/@tinacms/cli/index.d.ts"
@@ -36,7 +44,7 @@ export const BaseEditor = (props: {
   name: string;
   state: State;
   onUpdate: (code: string) => void;
-  extension: "jsx" | "md" | "graphql" | "ts";
+  extension: "jsx" | "md" | "graphql" | "ts" | "tsx";
 }) => {
   const monacoEl = useRef(null);
   const editor = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
@@ -47,6 +55,8 @@ export const BaseEditor = (props: {
     ts: "typescript",
     md: "markdown",
     graphql: "graphql",
+    jsx: "javascript",
+    tsx: "typescript",
   };
   const language = languages[props.extension];
 

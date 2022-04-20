@@ -13,7 +13,7 @@ export const queryCode = `query {
   }
 }`;
 
-export const schemaCode = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -106,7 +106,7 @@ testimonials:
     quote: Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.
 ---`;
 
-export const schemaCodeWithData = `import { defineSchema } from '@tinacms/cli'
+export const schemaCodeWithData = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -217,7 +217,7 @@ pageBlocks:
     _template: testimonial
 ---`;
 
-export const schemaCodeBlock = `import { defineSchema } from '@tinacms/cli'
+export const schemaCodeBlock = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
