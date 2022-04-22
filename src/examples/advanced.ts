@@ -7,7 +7,7 @@ export const queryCode = `query {
   }
 }`;
 
-export const reactCode = `import React from 'react'
+export const reactCode = `import * as React from 'react'
 import { useTina } from 'tinacms/dist/edit-state'
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
@@ -53,7 +53,7 @@ export default function Page(props) {
   )
 }`;
 
-export const schemaCode = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{

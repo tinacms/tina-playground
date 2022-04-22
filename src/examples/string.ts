@@ -44,7 +44,7 @@ export const reactCode2 = `return (
   </div>
 );`;
 
-export const schemaCode2 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode2 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -96,7 +96,7 @@ export const reactCode3 = `return (
   </div>
 );`;
 
-export const schemaCode3 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode3 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -154,7 +154,7 @@ export const reactCode4 = `return (
   </div>
 );`;
 
-export const schemaCode4 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode4 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -196,7 +196,7 @@ export const stringListOptions = {
   section: "middle",
 };
 
-export const schemaCode5 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode5 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -261,7 +261,7 @@ export const stringBody = {
   section: "middle",
 };
 
-export const schemaCode6 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode6 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -314,7 +314,7 @@ export const stringTextarea = {
   section: "middle",
 };
 
-export const schemaCode7 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode7 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -336,7 +336,7 @@ export const markdownCode7 = `---
 ---
 `;
 
-export const reactCode7 = `import React from 'react'
+export const reactCode7 = `import * as React from 'react'
 import { useCMS, wrapFieldsWithMeta } from 'tinacms'
 import { useTina } from 'tinacms/dist/edit-state'
 

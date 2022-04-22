@@ -9,7 +9,7 @@ export const queryCode = `query {
   }
 }`;
 
-export const schemaCode = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -59,7 +59,7 @@ export const queryCode2 = `query {
   }
 }`;
 
-export const schemaCode2 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode2 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -102,7 +102,7 @@ export const datetime = {
   section: "middle",
 };
 
-export const schemaCodeFormatted = `import { defineSchema } from '@tinacms/cli'
+export const schemaCodeFormatted = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -140,7 +140,7 @@ export const queryCode3 = `query {
   }
 }`;
 
-export const schemaCode3 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode3 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{

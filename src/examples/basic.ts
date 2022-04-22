@@ -19,7 +19,7 @@ export const wrapCodeNoImport = (
   queryCode: string,
   importItem: string
 ) => {
-  return `import React from 'react'
+  return `import * as React from 'react'
 ${importItem}
 
 export default function Page(props) {
@@ -68,7 +68,7 @@ export const reactCode = wrapCode(
   queryCode
 );
 
-export const schemaCode = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{

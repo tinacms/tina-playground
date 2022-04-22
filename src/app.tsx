@@ -152,10 +152,10 @@ export function Layout({
 
   const items = [
     {
-      name: ".tina/schema.ts",
+      name: ".tina/schema.tsx",
       render: (
         <BaseEditor
-          extension="ts"
+          extension="tsx"
           resetCounter={state.resetCounter}
           state={state}
           name={state.example.name}
@@ -218,7 +218,7 @@ export function Layout({
 
   const tabItems = [
     {
-      name: ".tina/schema.ts",
+      name: ".tina/schema.tsx",
     },
     {
       name: "posts/hello-world.md",
@@ -332,7 +332,7 @@ export class ErrorBoundary extends React.Component<
       );
     }
 
-    return this.props.children;
+    return <>{this.props.children}</>;
   }
 }
 
