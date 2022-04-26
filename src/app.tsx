@@ -5,6 +5,7 @@ import * as EditState from "tinacms/dist/edit-state";
 
 import * as tinacms from "tinacms";
 import * as basic from "./examples/basic";
+import * as validation from "./examples/validation";
 import * as advanced from "./examples/advanced";
 import { strings } from "./examples/string";
 import { scalars } from "./examples/scalars";
@@ -29,6 +30,12 @@ const examples = [
     name: "advanced",
     value: advanced,
     section: "top",
+  },
+  {
+    label: "Validation",
+    name: "validation",
+    value: validation,
+    section: 'top'
   },
   ...strings,
   ...scalars,
@@ -80,7 +87,6 @@ type Action =
   | { type: "status"; value: Status };
 
 function reducer(state: State, action: Action): State {
-  console.log(action);
   switch (action.type) {
     case "error":
       return {
