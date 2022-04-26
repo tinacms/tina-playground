@@ -101,7 +101,7 @@ export const object = {
 
 export const markdownCodeWithNoData = `---
 testimonials:
-  - author: Judith Black
+  - author: Livvy Abby
     role: CEO
     quote: Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.
 ---`;
@@ -119,6 +119,11 @@ export default defineSchema({
       type: "object",
       list: true,
       ui: {
+        // This allows the customization of the list item UI
+        // Data can be accessed by item?.<Name of field>
+        itemProps: (item) => {
+          return { label: \`\${item?.author}  ( \${item?.role} ) \`}
+        },
         // Setting a default will auto-populate new items with the given values
         defaultItem: {
           author: "Judith Black",
