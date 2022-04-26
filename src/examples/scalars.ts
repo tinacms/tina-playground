@@ -23,6 +23,27 @@ export default defineSchema({
     }]
   }]
 })`;
+export const schemaCodeValidate = `import { defineSchema } from 'tinacms'
+
+export default defineSchema({
+  collections: [{
+    label: "Post",
+    name: "post",
+    path: "posts",
+    fields: [{
+      label: "Count",
+      name: "count",
+      type: "number",
+      ui:{
+        validate: (val)=>{
+          if(val >= 10 ) {
+            return 'the number must be less then 10'
+          }
+        }
+      }
+    }]
+  }]
+})`;
 
 export const markdownCode = `---
 count: 3
@@ -45,6 +66,18 @@ export const number = {
   value: {
     queryCode,
     schemaCode,
+    markdownCode,
+    reactCode: wrapCode(reactCode, queryCode),
+  },
+  section: "middle",
+};
+
+export const numberWithValidate = {
+  label: "Number with validate",
+  name: "number-validate",
+  value: {
+    queryCode,
+    schemaCode: schemaCodeValidate,
     markdownCode,
     reactCode: wrapCode(reactCode, queryCode),
   },
@@ -154,6 +187,41 @@ export default defineSchema({
     }]
   }]
 })`;
+export const schemaCode3WithComponent = `import * as React from "react";
+import { defineSchema } from "tinacms";
+
+export default defineSchema({
+  collections: [
+    {
+      label: "Post",
+      name: "post",
+      path: "posts",
+      fields: [
+        {
+          label: "Published",
+          name: "published",
+          type: "boolean",
+          ui: {
+            component: ({ input }) => {
+              return (
+                <div>
+                  <label htmlFor="published"> Published: </label>
+                  <input
+                    {...input}
+                    id="published"
+                    type="checkbox"
+                    checked={input?.value}
+                  ></input>
+                </div>
+              );
+            },
+          },
+        },
+      ],
+    },
+  ],
+});
+`;
 
 export const markdownCode3 = `---
 published: true
@@ -182,10 +250,24 @@ export const boolean = {
   },
   section: "middle",
 };
+export const booleanWithComponent = {
+  label: "Boolean  with custom component",
+  name: "boolean-component",
+  value: {
+    queryCode: queryCode3,
+    schemaCode: schemaCode3WithComponent,
+    markdownCode: markdownCode3,
+    reactCode: wrapCode(reactCode3, queryCode3),
+  },
+  section: "middle",
+};
+
 
 export const scalars: Example[] = [
   number,
+  numberWithValidate,
   boolean,
+  booleanWithComponent,
   datetime,
   datetimeFormatted,
 ];

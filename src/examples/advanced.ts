@@ -63,7 +63,15 @@ export default defineSchema({
     fields: [{
       label: "Title",
       name: "title",
-      type: "string"
+      type: "string",
+      list: false,
+      ui: {
+        validate: (val) => {
+          if (val.length > 20) {
+            return "Title must be less then 20 characters"
+          }
+        }
+      }
     }, {
       label: "Body",
       name: "body",
