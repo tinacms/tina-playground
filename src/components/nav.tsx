@@ -1,13 +1,13 @@
+import React, { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/outline";
+import { Example } from "../app";
 import { Link } from "react-router-dom";
+import Notification from "./notification";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
-
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import { Example } from "../app";
 
 const Logo = () => (
   <svg viewBox="0 0 447 190" className="w-24 h-24" fill="none">
@@ -43,6 +43,7 @@ export function Nav({
 }) {
   const groupBySection = groupBy("section");
   const groups = groupBySection(examples);
+  const [show, setShow] = React.useState(false);
 
   return (
     <Disclosure as="nav" className="bg-white shadow relative z-20">
@@ -56,6 +57,19 @@ export function Nav({
                 </div>
               </div>
               <div className="hidden lg:ml-4 lg:flex lg:items-center">
+                <div className="relative">
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(window.location.toString());
+                      setShow(true);
+                    }}
+                    type="button"
+                    className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500"
+                  >
+                    Share
+                  </button>
+                  <Notification show={show} setShow={setShow} />
+                </div>
                 <Menu as="div" className="ml-4 relative inline-block text-left">
                   <div>
                     <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
