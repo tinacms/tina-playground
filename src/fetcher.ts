@@ -14,11 +14,9 @@ export const fetcher = async ({
   const res = await fetch(
     `${API_URL}?schema=${encodeURIComponent(
       JSON.stringify(schemaCode)
-    )}&content=${encodeURIComponent(
-      markdownCode
-    )}&query=${queryCode}&variables=${encodeURIComponent(
-      JSON.stringify(variables)
-    )}`
+    )}&content=${encodeURIComponent(markdownCode)}&query=${encodeURIComponent(
+      queryCode
+    )}&variables=${encodeURIComponent(JSON.stringify(variables))}`
   );
 
   const json = await res.json();

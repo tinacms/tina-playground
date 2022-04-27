@@ -6,7 +6,7 @@ export const reactCode = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        {data.getPostDocument.data.title}
+        {data.getPostDocument.data?.title}
       </h2>
     </div>
   </div>
@@ -19,6 +19,91 @@ export const string = {
     queryCode,
     schemaCode,
     markdownCode,
+    reactCode: wrapCode(reactCode, queryCode),
+  },
+  section: "middle",
+};
+
+const SchemaWithComponent = `import * as React from "react";
+import { defineSchema } from "tinacms";
+
+export default defineSchema({
+  collections: [
+    {
+      label: "Post",
+      name: "post",
+      path: "posts",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          type: "string",
+          ui: {
+            component: ({ input }) => {
+              return (
+                <div>
+                  <label htmlFor="title">Title: </label>
+                  <input {...input}></input>
+                </div>
+              );
+            },
+          },
+        },
+      ],
+    },
+  ],
+});
+`;
+
+const SchemaWithFormatAndParse = `import * as React from "react";
+import { defineSchema } from "tinacms";
+
+export default defineSchema({
+  collections: [
+    {
+      label: "Post",
+      name: "post",
+      path: "posts",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          type: "string",
+          ui: {
+            // is called on every form change but result is stored in data and not in the form value (saved to file but not displayed to the user)
+            parse: (val?: string)=>val && val.toUpperCase(),
+            // Is called on every form change and the result is put back into the value of the form (displayed to the user)           
+            format: (val?: string)=> (val ? val.toLowerCase() : ""),
+          },
+        },
+      ],
+    },
+  ],
+});
+`;
+
+export const stringWithComponent = {
+  label: "String with custom component",
+  name: "string-component",
+  value: {
+    queryCode,
+    schemaCode: SchemaWithComponent,
+    markdownCode,
+    reactCode: wrapCode(reactCode, queryCode),
+  },
+  section: "middle",
+};
+
+const markdownCodeUpper = `---
+title: HELLO, WORLD
+---`
+export const stringWithFormatAndParse = {
+  label: "String with format and parse",
+  name: "string-format-parse",
+  value: {
+    queryCode,
+    schemaCode: SchemaWithFormatAndParse,
+    markdownCode: markdownCodeUpper,
     reactCode: wrapCode(reactCode, queryCode),
   },
   section: "middle",
@@ -44,7 +129,7 @@ export const reactCode2 = `return (
   </div>
 );`;
 
-export const schemaCode2 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode2 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -96,7 +181,7 @@ export const reactCode3 = `return (
   </div>
 );`;
 
-export const schemaCode3 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode3 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -154,7 +239,7 @@ export const reactCode4 = `return (
   </div>
 );`;
 
-export const schemaCode4 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode4 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -196,7 +281,7 @@ export const stringListOptions = {
   section: "middle",
 };
 
-export const schemaCode5 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode5 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -261,7 +346,7 @@ export const stringBody = {
   section: "middle",
 };
 
-export const schemaCode6 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode6 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -314,7 +399,7 @@ export const stringTextarea = {
   section: "middle",
 };
 
-export const schemaCode7 = `import { defineSchema } from '@tinacms/cli'
+export const schemaCode7 = `import { defineSchema } from 'tinacms'
 
 export default defineSchema({
   collections: [{
@@ -336,7 +421,7 @@ export const markdownCode7 = `---
 ---
 `;
 
-export const reactCode7 = `import React from 'react'
+export const reactCode7 = `import * as React from 'react'
 import { useCMS, wrapFieldsWithMeta } from 'tinacms'
 import { useTina } from 'tinacms/dist/edit-state'
 
@@ -378,7 +463,6 @@ export default function Page(props) {
   if(isLoading) {
     return <div>Loading...</div>
   }
-  console.log(data.getPostDocument.data)
 
   return (
     <div className="bg-white">
@@ -420,4 +504,6 @@ export const strings: Example[] = [
   stringBody,
   stringTextarea,
   stringCustom,
+  stringWithComponent,
+  stringWithFormatAndParse
 ];

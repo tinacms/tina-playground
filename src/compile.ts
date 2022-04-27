@@ -17,7 +17,7 @@ export async function executeCode<T extends unknown>(
   return esbuild
     .transform(code, {
       jsx: "transform",
-      loader: "jsx",
+      loader: "tsx",
       format: "cjs",
     })
     .then((meh) => {
