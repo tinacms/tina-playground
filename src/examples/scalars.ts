@@ -2,10 +2,8 @@ import type { Example } from "../app";
 import { wrapCode } from "./basic";
 
 export const queryCode = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      count
-    }
+  post(relativePath: "hello-world.md") {
+    count
   }
 }`;
 
@@ -54,7 +52,7 @@ export const reactCode = `return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Counter</span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.count}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.post.count}</span>
       </a>
     </div>
   </div>
@@ -85,10 +83,8 @@ export const numberWithValidate = {
 };
 
 export const queryCode2 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      date
-    }
+  post(relativePath: "hello-world.md") {
+    date
   }
 }`;
 
@@ -117,7 +113,7 @@ return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Today's date: </span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.date}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.post.date}</span>
       </a>
     </div>
   </div>
@@ -166,10 +162,8 @@ export const datetimeFormatted = {
 };
 
 export const queryCode3 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      published
-    }
+  post(relativePath: "hello-world.md") {
+    published
   }
 }`;
 
@@ -232,7 +226,7 @@ export const reactCode3 = `return (
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex items-center justify-center">
       <a className={'bg-gray-50 text-gray-90 flex items-center px-3 py-2 text-sm font-medium rounded-md space-x-3'}>
         <span>Published</span>
-        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.getPostDocument.data.published ? "true" : "false"}</span>
+        <span className='bg-gray-300 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full'>{data.post.published ? "true" : "false"}</span>
       </a>
     </div>
   </div>
@@ -261,7 +255,6 @@ export const booleanWithComponent = {
   },
   section: "middle",
 };
-
 
 export const scalars: Example[] = [
   number,

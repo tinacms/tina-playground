@@ -2,13 +2,11 @@ import type { Example } from "../app";
 import { wrapCode } from "./basic";
 
 export const queryCode = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      testimonial {
-        author
-        role
-        quote
-      }
+  post(relativePath: "hello-world.md") {
+    testimonial {
+      author
+      role
+      quote
     }
   }
 }`;
@@ -60,7 +58,7 @@ export const reactCode = `return (
   <blockquote className="mt-10 px-4">
     <div className="max-w-3xl mx-auto text-center text-xl leading-9 font-medium text-gray-900">
       <p>
-        &ldquo;{data.getPostDocument.data.testimonial?.quote}&rdquo;
+        &ldquo;{data.post.testimonial?.quote}&rdquo;
       </p>
     </div>
     <footer className="mt-8">
@@ -73,13 +71,13 @@ export const reactCode = `return (
           />
         </div>
         <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-          <div className="text-base font-medium text-gray-900">{data.getPostDocument.data.testimonial?.author}</div>
+          <div className="text-base font-medium text-gray-900">{data.post.testimonial?.author}</div>
 
           <svg className="hidden md:block mx-1 h-5 w-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
             <path d="M11 0h3L9 20H6l5-20z" />
           </svg>
 
-          <div className="text-base font-medium text-gray-500">{data.getPostDocument.data.testimonial?.role}</div>
+          <div className="text-base font-medium text-gray-500">{data.post.testimonial?.role}</div>
         </div>
       </div>
     </footer>
@@ -156,20 +154,18 @@ export default defineSchema({
 })`;
 
 export const queryCode2 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      testimonials {
-        author
-        role
-        quote
-      }
+  post(relativePath: "hello-world.md") {
+    testimonials {
+      author
+      role
+      quote
     }
   }
 }`;
 
 export const reactCode2 = `return (
   <div className="relative">
-  {data.getPostDocument.data.testimonials?.map(testimonial => (<blockquote className="mt-10">
+  {data.post.testimonials?.map(testimonial => (<blockquote className="mt-10">
     <div className="max-w-3xl mx-auto text-center text-xl leading-9 font-medium text-gray-900">
       <p>
         &ldquo;{testimonial?.quote}&rdquo;
@@ -284,19 +280,17 @@ export default defineSchema({
 })`;
 
 export const queryCodeBlock = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      pageBlocks {
-        __typename
-        ...on PostPageBlocksCta {
-          header
-          description
-        }
-        ...on PostPageBlocksTestimonial {
-          author
-          role
-          quote
-        }
+  post(relativePath: "hello-world.md") {
+    pageBlocks {
+      __typename
+      ...on PostPageBlocksCta {
+        header
+        description
+      }
+      ...on PostPageBlocksTestimonial {
+        author
+        role
+        quote
       }
     }
   }
@@ -350,7 +344,7 @@ export const blockTestimonial = `return (
 export const reactCodeBlock = `
 
 return (
-  <div>{data.getPostDocument.data.pageBlocks?.map(pageBlock => {
+  <div>{data.post.pageBlocks?.map(pageBlock => {
     switch(pageBlock.__typename) {
       case "PostPageBlocksCta":
         ${blockCta}

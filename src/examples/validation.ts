@@ -1,25 +1,21 @@
 export const queryCode = `query {
-    getPostDocument(relativePath: "hello-world.md") {
-      data {
-        title
-        description
-      }
-    }
-  }`;
-  
-export const reactCode = `import * as React from 'react'
-import { useTina } from 'tinacms/dist/edit-state'
-  
-export default function Page(props) {
-  const {data, isLoading} = useTina({ query: \`query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
+    post(relativePath: "hello-world.md") {
       title
       description
     }
+  }`;
+
+export const reactCode = `import * as React from 'react'
+import { useTina } from 'tinacms/dist/edit-state'
+
+export default function Page(props) {
+  const {data, isLoading} = useTina({ query: \`query {
+  post(relativePath: "hello-world.md") {
+    title
+    description
   }
-}\`, 
-    variables: {}, 
+}\`,
+    variables: {},
     data: props.data
   })
 
@@ -31,18 +27,18 @@ export default function Page(props) {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl mb-4">
-          <span className="block">{data.getPostDocument.data.title}</span>
+          <span className="block">{data.post.title}</span>
         </h2>
         <div>
-          Description:  {data.getPostDocument.data.description}
+          Description:  {data.post.description}
         </div>
       </div>
     </div>
   )
 }`;
-  
-  export const schemaCode = `import { defineSchema } from 'tinacms'
-  
+
+export const schemaCode = `import { defineSchema } from 'tinacms'
+
   export default defineSchema({
     collections: [{
       label: "Post",
@@ -79,10 +75,8 @@ export default function Page(props) {
       ],
     }]
   })`;
-  
-  export const markdownCode = `---
+
+export const markdownCode = `---
 title: Hello, Again!
 description: This is a description
----`
-  
-  
+---`;

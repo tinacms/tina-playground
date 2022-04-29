@@ -1,8 +1,6 @@
 export const queryCode = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      title
-    }
+  post(relativePath: "hello-world.md") {
+    title
   }
 }`;
 
@@ -23,11 +21,11 @@ export const wrapCodeNoImport = (
 ${importItem}
 
 export default function Page(props) {
-  const {data, isLoading} = useTina({ query: \`${queryCode}\`, 
-    variables: {}, 
+  const {data, isLoading} = useTina({ query: \`${queryCode}\`,
+    variables: {},
     data: props.data
   })
-  
+
   if(isLoading) {
     return <div>Loading...</div>
   }
@@ -41,7 +39,7 @@ export const reactCode = wrapCode(
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block">{data.getPostDocument.data.title}</span>
+          <span className="block">{data.post.title}</span>
           <span className="block">Start your free trial today.</span>
         </h2>
         <div className="mt-8 flex justify-center">

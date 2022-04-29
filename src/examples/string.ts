@@ -6,7 +6,7 @@ export const reactCode = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        {data.getPostDocument.data?.title}
+        {data.post.title}
       </h2>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default defineSchema({
           ui: {
             // is called on every form change but result is stored in data and not in the form value (saved to file but not displayed to the user)
             parse: (val?: string)=>val && val.toUpperCase(),
-            // Is called on every form change and the result is put back into the value of the form (displayed to the user)           
+            // Is called on every form change and the result is put back into the value of the form (displayed to the user)
             format: (val?: string)=> (val ? val.toLowerCase() : ""),
           },
         },
@@ -96,7 +96,7 @@ export const stringWithComponent = {
 
 const markdownCodeUpper = `---
 title: HELLO, WORLD
----`
+---`;
 export const stringWithFormatAndParse = {
   label: "String with format and parse",
   name: "string-format-parse",
@@ -110,17 +110,15 @@ export const stringWithFormatAndParse = {
 };
 
 export const queryCode2 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      tags
-    }
+  post(relativePath: "hello-world.md") {
+    tags
   }
 }`;
 
 export const reactCode2 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
-      {data.getPostDocument.data.tags?.map((tag) => (
+      {data.post.tags?.map((tag) => (
         <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
           {tag}
         </span>
@@ -164,10 +162,8 @@ export const stringList = {
 };
 
 export const queryCode3 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      category
-    }
+  post(relativePath: "hello-world.md") {
+    category
   }
 }`;
 
@@ -175,7 +171,7 @@ export const reactCode3 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
       <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
-        {data.getPostDocument.data.category}
+        {data.post.category}
       </span>
     </div>
   </div>
@@ -220,17 +216,15 @@ export const stringOptions = {
 };
 
 export const queryCode4 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      categories
-    }
+  post(relativePath: "hello-world.md") {
+    categories
   }
 }`;
 
 export const reactCode4 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8 space-x-2">
-      {data.getPostDocument.data.categories?.map((tag) => (
+      {data.post.categories?.map((tag) => (
         <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-pink-800">
           {tag}
         </span>
@@ -313,24 +307,22 @@ export const reactCode5 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900">
-        {data.getPostDocument.data.title}
+        {data.post.title}
       </h2>
       <div className="my-4 flex items-center" aria-hidden="true">
         <div className="w-full border-t border-gray-300" />
       </div>
       <p className="text-md text-gray-700">
-        {data.getPostDocument.data.body}
+        {data.post.body}
       </p>
     </div>
   </div>
 )`;
 
 export const queryCode5 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      title
-      body
-    }
+  post(relativePath: "hello-world.md") {
+    title
+    body
   }
 }`;
 
@@ -373,17 +365,15 @@ export const reactCode6 = `return (
   <div className="bg-white">
     <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <p className="text-md text-gray-700">
-        {data.getPostDocument.data.description}
+        {data.post.description}
       </p>
     </div>
   </div>
 )`;
 
 export const queryCode6 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      description
-    }
+  post(relativePath: "hello-world.md") {
+    description
   }
 }`;
 
@@ -443,10 +433,8 @@ const DataList = (props) => {
 
 export default function Page(props) {
   const {data, isLoading} = useTina({ query: \`query {
-      getPostDocument(relativePath: "hello-world.md") {
-        data {
-          favoriteIceCream
-        }
+      post(relativePath: "hello-world.md") {
+        favoriteIceCream
       }
     }\`, variables: {}, data: props.data
   })
@@ -468,7 +456,7 @@ export default function Page(props) {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <p className="text-md text-gray-700">
-          My favorite ice cream flavor is: {data.getPostDocument.data.favoriteIceCream}
+          My favorite ice cream flavor is: {data.post.favoriteIceCream}
         </p>
       </div>
     </div>
@@ -477,10 +465,8 @@ export default function Page(props) {
 `;
 
 export const queryCode7 = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      favoriteIceCream
-    }
+  post(relativePath: "hello-world.md") {
+    favoriteIceCream
   }
 }`;
 
@@ -505,5 +491,5 @@ export const strings: Example[] = [
   stringTextarea,
   stringCustom,
   stringWithComponent,
-  stringWithFormatAndParse
+  stringWithFormatAndParse,
 ];

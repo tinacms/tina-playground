@@ -2,14 +2,10 @@ import { Example } from "../app";
 import { wrapCode } from "./basic";
 
 export const queryCode = `query {
-  getPostDocument(relativePath: "hello-world.md") {
-    data {
-      author {
-        data {
-          name
-          avatar
-        }
-      }
+  post(relativePath: "hello-world.md") {
+    author {
+      name
+      avatar
     }
   }
 }`;
@@ -19,15 +15,11 @@ import { useTina } from 'tinacms/dist/edit-state'
 
 export default function Page(props) {
   const {data, isLoading} = useTina({ query: \`query {
-      getPostDocument(relativePath: "hello-world.md") {
-        data {
-          author {
-            ...on AuthorDocument {
-              data {
-                name
-                avatar
-              }
-            }
+      post(relativePath: "hello-world.md") {
+        author {
+          ...on Author {
+            name
+            avatar
           }
         }
       }
@@ -58,12 +50,12 @@ export default function Page(props) {
       <div className="mt-6 flex items-center">
         <div className="flex-shrink-0">
           <a href="#">
-            <img className="h-10 w-10 rounded-full" src={data.getPostDocument.data.author.data.avatar} alt="" />
+            <img className="h-10 w-10 rounded-full" src={data.post.author.avatar} alt="" />
           </a>
         </div>
         <div className="ml-3">
           <p className="text-sm font-medium text-gray-900">
-            <a href="#">{data.getPostDocument.data.author.data.name}</a>
+            <a href="#">{data.post.author.name}</a>
           </p>
           <div className="flex space-x-1 text-sm text-gray-500">
             <span >Yesterday</span>
