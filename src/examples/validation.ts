@@ -37,9 +37,9 @@ export default function Page(props) {
   )
 }`;
 
-export const schemaCode = `import { defineSchema } from 'tinacms'
+export const schemaCode = `import { defineSchema, defineConfig } from 'tinacms'
 
-  export default defineSchema({
+  const schema = defineSchema({
     collections: [{
       label: "Post",
       name: "post",
@@ -74,7 +74,9 @@ export const schemaCode = `import { defineSchema } from 'tinacms'
          },
       ],
     }]
-  })`;
+  })
+  export default defineConfig({ schema })
+  `;
 
 export const markdownCode = `---
 title: Hello, Again!

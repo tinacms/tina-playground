@@ -8,7 +8,7 @@ export const wrapCode = (code: string, queryCode: string) => {
   return wrapCodeNoImport(
     code,
     queryCode,
-    `import { useTina } from 'tinacms/dist/edit-state'`
+    `import { useTina } from 'tinacms/dist/react'`
   );
 };
 
@@ -66,9 +66,9 @@ export const reactCode = wrapCode(
   queryCode
 );
 
-export const schemaCode = `import { defineSchema } from 'tinacms'
+export const schemaCode = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -79,7 +79,9 @@ export default defineSchema({
       type: "string"
     }]
   }]
-})`;
+})
+
+export default defineConfig({ schema })`;
 
 export const markdownCode = `---
 title: Hello, World

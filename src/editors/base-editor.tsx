@@ -5,6 +5,7 @@ import { State } from "../app";
 import { getIntrospectionQuery } from "graphql";
 import { executeCode } from "../compile";
 import * as richtext from "tinacms/dist/rich-text";
+import * as tinaReact from "tinacms/dist/react";
 import * as tinacms from "tinacms";
 import { MonacoGraphQLAPI } from "monaco-graphql";
 import { API_URL, fetcher } from "../fetcher";
@@ -35,6 +36,7 @@ const deps = {
   react: React,
   "@tinacms/cli": { defineSchema: (obj: object) => obj },
   "tinacms/dist/rich-text": richtext,
+  "tinacms/dist/react": tinaReact,
   tinacms: tinacms,
 };
 

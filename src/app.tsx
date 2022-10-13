@@ -2,6 +2,7 @@ import React from "react";
 import { BaseEditor } from "./editors/base-editor";
 import * as Rich from "tinacms/dist/rich-text";
 import * as EditState from "tinacms/dist/edit-state";
+import * as TinaReact from "tinacms/dist/react";
 
 import * as tinacms from "tinacms";
 import * as basic from "./examples/basic";
@@ -52,10 +53,11 @@ const examples = [
 
 const deps = {
   react: React,
-  "@tinacms/cli": { defineSchema: (obj: object) => obj },
+  "@tinacms/cli": { defineSchema: (obj: object) => obj, defineConfig: (obj: object) => obj },
   "tinacms/dist/rich-text": Rich,
   "tinacms/dist/edit-state": EditState,
   tinacms: tinacms,
+  "tinacms/dist/react": TinaReact,
 };
 type Status = "ready" | "pending" | "error";
 type Code = {
@@ -164,7 +166,7 @@ export function Layout({
 
   const items = [
     {
-      name: ".tina/schema.tsx",
+      name: ".tina/config.tsx",
       render: (
         <BaseEditor
           extension="tsx"
@@ -230,7 +232,7 @@ export function Layout({
 
   const tabItems = [
     {
-      name: ".tina/schema.tsx",
+      name: ".tina/config.tsx",
     },
     {
       name: "posts/hello-world.md",

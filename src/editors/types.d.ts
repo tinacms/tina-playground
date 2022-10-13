@@ -436,4 +436,7 @@ export declare type TinaField = TinaFieldBase;
 
 export declare const defineSchema: (config: TinaCloudSchema) => TinaCloudSchema;
 
+
+export declare const defineConfig: (config: {schema: TinaCloudSchema}) => {schema: TinaCloudSchema};
+
 export {};
