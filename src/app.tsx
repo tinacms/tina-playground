@@ -2,7 +2,7 @@ import React from "react";
 import { BaseEditor } from "./editors/base-editor";
 import * as Rich from "tinacms/dist/rich-text";
 import * as EditState from "tinacms/dist/edit-state";
-import * as TinaReact from "tinacms/dist/react";
+// import * as TinaReact from "tinacms/dist/react";
 
 import * as tinacms from "tinacms";
 import * as basic from "./examples/basic";
@@ -57,7 +57,8 @@ const deps = {
   "tinacms/dist/rich-text": Rich,
   "tinacms/dist/edit-state": EditState,
   tinacms: tinacms,
-  "tinacms/dist/react": TinaReact,
+  // TODO: switch this back to TinaReact when we switch to iframe
+  "tinacms/dist/react": EditState,
 };
 type Status = "ready" | "pending" | "error";
 type Code = {

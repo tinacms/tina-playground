@@ -11,9 +11,9 @@ export const queryCode = `query {
   }
 }`;
 
-export const schemaCode = `import { defineSchema } from 'tinacms'
+export const schemaCode = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -44,7 +44,9 @@ export default defineSchema({
       ]
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 
 export const markdownCode = `---
 testimonial:
@@ -104,9 +106,9 @@ testimonials:
     quote: Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.
 ---`;
 
-export const schemaCodeWithData = `import { defineSchema } from 'tinacms'
+export const schemaCodeWithData = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -151,7 +153,9 @@ export default defineSchema({
       ]
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 
 export const queryCode2 = `query {
   post(relativePath: "hello-world.md") {
@@ -218,9 +222,9 @@ pageBlocks:
     _template: testimonial
 ---`;
 
-export const schemaCodeBlock = `import { defineSchema } from 'tinacms'
+export const schemaCodeBlock = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -277,7 +281,9 @@ export default defineSchema({
       ]
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 
 export const queryCodeBlock = `query {
   post(relativePath: "hello-world.md") {

@@ -6,7 +6,7 @@ export const queryCode = `query {
 }`;
 
 export const reactCode = `import * as React from 'react'
-import { useTina } from 'tinacms/dist/edit-state'
+import { useTina } from 'tinacms/dist/react'
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 const Callout = ({message}) => {

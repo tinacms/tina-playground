@@ -25,9 +25,9 @@ export const string = {
 };
 
 const SchemaWithComponent = `import * as React from "react";
-import { defineSchema } from "tinacms";
+import { defineSchema, defineConfig } from "tinacms";
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [
     {
       label: "Post",
@@ -53,12 +53,13 @@ export default defineSchema({
     },
   ],
 });
+export default defineConfig({ schema });
 `;
 
 const SchemaWithFormatAndParse = `import * as React from "react";
-import { defineSchema } from "tinacms";
+import { defineSchema, defineConfig } from "tinacms";
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [
     {
       label: "Post",
@@ -80,6 +81,7 @@ export default defineSchema({
     },
   ],
 });
+export default defineConfig({ schema });
 `;
 
 export const stringWithComponent = {
@@ -127,9 +129,9 @@ export const reactCode2 = `return (
   </div>
 );`;
 
-export const schemaCode2 = `import { defineSchema } from 'tinacms'
+export const schemaCode2 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -141,7 +143,9 @@ export default defineSchema({
       list: true
     }]
   }]
-})`;
+})
+
+export default defineConfig({ schema })`;
 
 export const markdownCode2 = `---
 tags:
@@ -177,9 +181,9 @@ export const reactCode3 = `return (
   </div>
 );`;
 
-export const schemaCode3 = `import { defineSchema } from 'tinacms'
+export const schemaCode3 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -197,7 +201,9 @@ export default defineSchema({
       }]
     }]
   }]
-})`;
+})
+export default defineConfig({ schema })
+`;
 
 export const markdownCode3 = `---
 category: movies
@@ -233,9 +239,9 @@ export const reactCode4 = `return (
   </div>
 );`;
 
-export const schemaCode4 = `import { defineSchema } from 'tinacms'
+export const schemaCode4 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -256,7 +262,9 @@ export default defineSchema({
       ]
     }]
   }]
-})`;
+})
+export default defineConfig({ schema })
+`;
 
 export const markdownCode4 = `---
 categories:
@@ -275,9 +283,9 @@ export const stringListOptions = {
   section: "middle",
 };
 
-export const schemaCode5 = `import { defineSchema } from 'tinacms'
+export const schemaCode5 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -294,7 +302,9 @@ export default defineSchema({
       isBody: true
     }]
   }]
-})`;
+})
+export default defineConfig({ schema })
+`;
 
 export const markdownCode5 = `---
 title: Hello, World
@@ -338,9 +348,9 @@ export const stringBody = {
   section: "middle",
 };
 
-export const schemaCode6 = `import { defineSchema } from 'tinacms'
+export const schemaCode6 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -354,7 +364,9 @@ export default defineSchema({
       }
     }]
   }]
-})`;
+})
+export default defineConfig({ schema })
+`;
 
 export const markdownCode6 = `---
 description: This is a lengthy description that would be easier to edit in a textarea field
@@ -389,9 +401,9 @@ export const stringTextarea = {
   section: "middle",
 };
 
-export const schemaCode7 = `import { defineSchema } from 'tinacms'
+export const schemaCode7 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -405,7 +417,10 @@ export default defineSchema({
       }
     }]
   }]
-})`;
+})
+
+export default defineConfig({ schema })
+`;
 
 export const markdownCode7 = `---
 ---
@@ -413,7 +428,7 @@ export const markdownCode7 = `---
 
 export const reactCode7 = `import * as React from 'react'
 import { useCMS, wrapFieldsWithMeta } from 'tinacms'
-import { useTina } from 'tinacms/dist/edit-state'
+import { useTina } from 'tinacms/dist/react'
 
 const DataList = (props) => {
   const onChange = (e) => {

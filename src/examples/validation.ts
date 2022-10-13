@@ -6,7 +6,7 @@ export const queryCode = `query {
   }`;
 
 export const reactCode = `import * as React from 'react'
-import { useTina } from 'tinacms/dist/edit-state'
+import { useTina } from 'tinacms/dist/react'
 
 export default function Page(props) {
   const {data, isLoading} = useTina({ query: \`query {
