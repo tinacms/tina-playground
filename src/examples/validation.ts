@@ -6,7 +6,7 @@ export const queryCode = `query {
   }`;
 
 export const reactCode = `import * as React from 'react'
-import { useTina } from 'tinacms/dist/edit-state'
+import { useTina } from 'tinacms/dist/react'
 
 export default function Page(props) {
   const {data, isLoading} = useTina({ query: \`query {
@@ -37,9 +37,9 @@ export default function Page(props) {
   )
 }`;
 
-export const schemaCode = `import { defineSchema } from 'tinacms'
+export const schemaCode = `import { defineSchema, defineConfig } from 'tinacms'
 
-  export default defineSchema({
+  const schema = defineSchema({
     collections: [{
       label: "Post",
       name: "post",
@@ -74,7 +74,9 @@ export const schemaCode = `import { defineSchema } from 'tinacms'
          },
       ],
     }]
-  })`;
+  })
+  export default defineConfig({ schema })
+  `;
 
 export const markdownCode = `---
 title: Hello, Again!

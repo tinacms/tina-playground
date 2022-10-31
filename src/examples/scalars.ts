@@ -7,9 +7,9 @@ export const queryCode = `query {
   }
 }`;
 
-export const schemaCode = `import { defineSchema } from 'tinacms'
+export const schemaCode = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -20,10 +20,12 @@ export default defineSchema({
       type: "number",
     }]
   }]
-})`;
-export const schemaCodeValidate = `import { defineSchema } from 'tinacms'
+})
+export default defineConfig({ schema });
+`;
+export const schemaCodeValidate = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -41,7 +43,9 @@ export default defineSchema({
       }
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 
 export const markdownCode = `---
 count: 3
@@ -88,9 +92,9 @@ export const queryCode2 = `query {
   }
 }`;
 
-export const schemaCode2 = `import { defineSchema } from 'tinacms'
+export const schemaCode2 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -101,7 +105,9 @@ export default defineSchema({
       type: "datetime",
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 
 export const markdownCode2 = `---
 date: '2021-12-09T08:00:00.000Z'
@@ -131,9 +137,9 @@ export const datetime = {
   section: "middle",
 };
 
-export const schemaCodeFormatted = `import { defineSchema } from 'tinacms'
+export const schemaCodeFormatted = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -147,7 +153,10 @@ export default defineSchema({
       }
     }]
   }]
-})`;
+})
+
+export default defineConfig({ schema });
+`;
 
 export const datetimeFormatted = {
   label: "Datetime Custom Format",
@@ -167,9 +176,9 @@ export const queryCode3 = `query {
   }
 }`;
 
-export const schemaCode3 = `import { defineSchema } from 'tinacms'
+export const schemaCode3 = `import { defineSchema, defineConfig } from 'tinacms'
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [{
     label: "Post",
     name: "post",
@@ -180,11 +189,13 @@ export default defineSchema({
       type: "boolean",
     }]
   }]
-})`;
+})
+export default defineConfig({ schema });
+`;
 export const schemaCode3WithComponent = `import * as React from "react";
-import { defineSchema } from "tinacms";
+import { defineSchema, defineConfig } from "tinacms";
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [
     {
       label: "Post",
@@ -215,6 +226,7 @@ export default defineSchema({
     },
   ],
 });
+export default defineConfig({ schema });
 `;
 
 export const markdownCode3 = `---

@@ -5,6 +5,8 @@ import { State } from "../app";
 import { getIntrospectionQuery } from "graphql";
 import { executeCode } from "../compile";
 import * as richtext from "tinacms/dist/rich-text";
+// import * as tinaReact from "tinacms/dist/react";
+import * as editState from "tinacms/dist/edit-state";
 import * as tinacms from "tinacms";
 import { MonacoGraphQLAPI } from "monaco-graphql";
 import { API_URL, fetcher } from "../fetcher";
@@ -35,6 +37,8 @@ const deps = {
   react: React,
   "@tinacms/cli": { defineSchema: (obj: object) => obj },
   "tinacms/dist/rich-text": richtext,
+  // TODO: switch this back to TinaReact when we switch to iframe
+  "tinacms/dist/react": editState,
   tinacms: tinacms,
 };
 

@@ -7,6 +7,8 @@ import {
 } from "tinacms";
 import { TinaSchema, addNamespaceToSchema } from "@tinacms/schema-tools";
 import * as richtext from "tinacms/dist/rich-text";
+import * as editState from 'tinacms/dist/edit-state'
+// import * as TinaReact from 'tinacms/dist/react'
 import * as tinacms from "tinacms";
 import { executeCode } from "./compile";
 import { Dispatch } from "./app";
@@ -16,6 +18,8 @@ const deps = {
   react: React,
   "tinacms/dist/rich-text": richtext,
   tinacms: tinacms,
+ // TODO: switch this back to TinaReact when we switch to iframe
+ "tinacms/dist/react": editState,
 };
 
 class MockClient extends LocalClient {
@@ -36,7 +40,8 @@ class MockClient extends LocalClient {
   }
   async request(query: string, options: { variables: object }) {
     try {
-      const schemaObj = (await executeCode(this.schemaCode, deps)) as object;
+      // @ts-ignore
+      const schemaObj = (await executeCode(this.schemaCode, deps))?.schema as object;
       // @ts-ignore
       this.schema = new TinaSchema({
         version: { fullVersion: "", major: "", minor: "", patch: "" },
