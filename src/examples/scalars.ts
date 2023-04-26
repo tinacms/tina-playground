@@ -110,7 +110,7 @@ export default defineConfig({ schema });
 `;
 
 export const markdownCode2 = `---
-date: '2021-12-09T08:00:00.000Z'
+date: '2021-12-09'
 ---`;
 
 export const reactCode2 = `
@@ -147,10 +147,12 @@ const schema = defineSchema({
     fields: [{
       label: "Date",
       name: "date",
-      type: "datetime",
+      type: "string",
       ui: {
-        dateFormat: 'YYYY MM DD'
-      }
+        component: 'date',
+        dateFormat: 'YYYY-MM-DD',
+        parse: (value) => value && value.format('YYYY-MM-DD'),
+      },
     }]
   }]
 })
